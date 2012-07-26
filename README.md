@@ -1,4 +1,5 @@
-puzzles
+Puzzles
 =======
 
-A home for various puzzles and fun problems to solve.
+* Project Euler
+  * [Risky Moon|http://projecteuler.net/problem=353]
