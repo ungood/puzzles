@@ -5,11 +5,11 @@ using Puzzles.Common.Spatial;
 
 namespace Puzzles.Euler.RiskyMoon.Lattice
 {
-    class RecursiveSliceSphereLatticeCalculator : ISphereLatticeCalculator
+    class SliceSphereLatticeCalculator : ISphereLatticeCalculator
     {
         private readonly ICircleLatticeCalculator circleLatticeCalculator;
 
-        public RecursiveSliceSphereLatticeCalculator(ICircleLatticeCalculator circleLatticeCalculator)
+        public SliceSphereLatticeCalculator(ICircleLatticeCalculator circleLatticeCalculator)
         {
             this.circleLatticeCalculator = circleLatticeCalculator;
         }
