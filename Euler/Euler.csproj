@@ -66,7 +66,9 @@
     <Compile Include="RiskyMoon\Lattice\TurtleCircleLatticeCalculator.cs" />
     <Compile Include="RiskyMoon\RiskyMoonPuzzle.cs" />
     <Compile Include="RiskyMoon\Risk\IRiskCalculator.cs" />
+    <Compile Include="RiskyMoon\RiskResult.cs" />
     <Compile Include="RiskyMoon\Station.cs" />
+    <Compile Include="RiskyMoon\StationPath.cs" />
     <Compile Include="RiskyMoon\Tests\CircleLatticeTests.cs" />
     <Compile Include="RiskyMoon\Tests\RiskCalculatorTests.cs" />
     <Compile Include="RiskyMoon\Tests\SphereLatticeTests.cs" />

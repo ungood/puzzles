@@ -36,7 +36,7 @@ namespace Puzzles.Euler.RiskyMoon.Tests
 
             var stations = unitCircle.Select(coord => new Station(coord));
 
-            var actual = calculator.CalculateRisk(stations, 1);
+            var actual = calculator.CalculateRisk(stations, 1).TotalRisk;
 
             Assert.AreEqual(0.5, actual);
         }
@@ -47,29 +47,30 @@ namespace Puzzles.Euler.RiskyMoon.Tests
         {
             var calculator = new ParallelNaiveSphereLatticeCalculator();
             var stations = calculator.FindLatticePoints(7).Select(x => new Station(x));
-            var actual = riskCalculator.CalculateRisk(stations, 7);
+            var actual = riskCalculator.CalculateRisk(stations, 7).TotalRisk;
 
             Assert.AreEqual(0.1784943998, Math.Round(actual, 10));
         }
 
         [Test]
-        public void FirstThirtyAsCsv()
+        public void MaxZ()
         {
             var latticeCalculator = new SliceSphereLatticeCalculator(new TurtleCircleLatticeCalculator());
             var riskCalculator = new AStarRiskCalculator();
 
-            var results = Enumerable.Range(1, 30).AsParallel()
+            var results = Enumerable.Range(1, 50).AsParallel()
                 .Select(radius =>
                 {
                     var stations = latticeCalculator.FindLatticePoints(radius).Select(coord => new Station(coord));
-                    return new Tuple<int, double>(radius, riskCalculator.CalculateRisk(stations, radius));
+                    return riskCalculator.CalculateRisk(stations, radius);
                 })
-                .OrderBy(grp => grp.Item1);
+                .OrderBy(result => result.Radius);
                 
 
             foreach (var result in results)
             {
-                Console.WriteLine("{0}\t{1}", result.Item1, result.Item2);
+                var maxZ = result.Path.Max(path => path.Source.CartesianLocation.Z - path.Target.CartesianLocation.Z);
+                Console.WriteLine("{0}: {1}", result.Radius, maxZ);
             }
         }
 
@@ -93,26 +94,26 @@ namespace Puzzles.Euler.RiskyMoon.Tests
         // 0.23604566644613: 3, 24, 6, 12
         // 0.50000000000000: 2, 16, 8, 4, 1
         [Test]
-        public void FirstThirtyGroupedByRisk()
+        public void FirstFiftyGroupedByRisk()
         {
             var latticeCalculator = new SliceSphereLatticeCalculator(new TurtleCircleLatticeCalculator());
             var riskCalculator = new AStarRiskCalculator();
 
-            var groups = Enumerable.Range(1, 30).AsParallel()
+            var groups = Enumerable.Range(32767, 1).AsParallel()
                 .Select(radius =>
                 {
                     var stations = latticeCalculator.FindLatticePoints(radius).Select(coord => new Station(coord));
-                    return new Tuple<int, int, double>(radius, stations.Count(), riskCalculator.CalculateRisk(stations, radius));
+                    return riskCalculator.CalculateRisk(stations, radius);
                 })
-                .GroupBy(tuple => tuple.Item3)
+                .GroupBy(result => result.TotalRisk)
                 .OrderBy(grp => grp.Key);
 
             foreach(var grp in groups)
             {
-                Console.Write(grp.Key + ":");
-                foreach(var value in grp.OrderBy(tuple => tuple.Item1))
+                Console.Write("{0}, {1}:", grp.Key, grp.First().TotalDistanceRatio);
+                foreach(var value in grp.OrderBy(result => result.Radius))
                 {
-                    Console.Write(" {0}({1})", value.Item1, value.Item2);
+                    Console.Write(" {0:N0}", value.Radius);
                 }
                 Console.WriteLine();
             }
@@ -122,10 +123,27 @@ namespace Puzzles.Euler.RiskyMoon.Tests
         [Test]
         public void FindSolutions()
         {
-            var m15 = 0.10714794796212; // ~83 (1.463)
-            var m5 = 0.18414647913495;
-            var m3 = 0.23604566644613;
+            Console.WriteLine(FindResult(15));
+            Console.WriteLine("--");
+
+            Console.WriteLine(FindResult(30));
+            Console.WriteLine("--");
+            Console.WriteLine(FindResult(3));
+            Console.WriteLine("--");
+
+            Console.WriteLine(FindResult(10));
+            Console.WriteLine("--");
+
         }
 
+
+        private RiskResult FindResult(int radius)
+        {
+            var latticeCalculator = new SliceSphereLatticeCalculator(new TurtleCircleLatticeCalculator());
+            var riskCalculator = new AStarRiskCalculator();
+
+            var stations = latticeCalculator.FindLatticePoints(radius).Select(coord => new Station(coord));
+            return riskCalculator.CalculateRisk(stations, radius);
+        }
     }
 }

@@ -29,7 +29,7 @@ namespace Puzzles.Euler.RiskyMoon
         public double Solve(int radius)
         {
             var latticePoints = latticeCalculator.FindLatticePoints(radius);
-            return riskCalculator.CalculateRisk(latticePoints.Select(point => new Station(point)), radius);
+            return riskCalculator.CalculateRisk(latticePoints.Select(point => new Station(point)), radius).TotalRisk;
         }
     }
 }

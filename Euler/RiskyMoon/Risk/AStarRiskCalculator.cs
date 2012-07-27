@@ -10,7 +10,7 @@ namespace Puzzles.Euler.RiskyMoon.Risk
 {
     public class AStarRiskCalculator : IRiskCalculator
     {
-        public double CalculateRisk(IEnumerable<Station> stations, int radius)
+        public RiskResult CalculateRisk(IEnumerable<Station> stations, int radius)
         {
             var stationList = stations.ToList();
             var graph = BuildGraph(stationList);
@@ -21,38 +21,42 @@ namespace Puzzles.Euler.RiskyMoon.Risk
             return CalculateMinimalRisk(graph, northPole, southPole);
         }
 
-        private AdjacencyGraph<Station, Edge<Station>> BuildGraph(IList<Station> stations)
+        private DelegateVertexAndEdgeListGraph<Station, StationPath> BuildGraph(IList<Station> stations)
         {
-            var graph = new AdjacencyGraph<Station, Edge<Station>>(false);
+            return new DelegateVertexAndEdgeListGraph<Station, StationPath>(stations,
+                delegate(Station station, out IEnumerable<StationPath> result) {
+                    result = stations.Select(target => new StationPath(station, target));
+                    return true;
+                });
 
-            graph.AddVertexRange(stations);
-            for (int i = 0; i < stations.Count; i++)
-            {
-                for (int j = 0; j < stations.Count; j++)
-                {
-                    if (i == j) continue;
-                    graph.AddEdge(new Edge<Station>(stations[i], stations[j]));
-                }
-            }
+            //var graph = new AdjacencyGraph<Station, StationPath>(false);
 
-            return graph;
+            //graph.AddVertexRange(stations);
+            //for (int i = 0; i < stations.Count; i++)
+            //{
+            //    for (int j = 0; j < stations.Count; j++)
+            //    {
+            //        if (i == j) continue;
+            //        graph.AddEdge(new StationPath(stations[i], stations[j]));
+            //    }
+            //}
+
+            //return graph;
         }
 
-        public double CalculateMinimalRisk(AdjacencyGraph<Station, Edge<Station>> graph, Station from, Station to)
+        public RiskResult CalculateMinimalRisk(IVertexAndEdgeListGraph<Station, StationPath> graph, Station from, Station to)
         {
-            Func<Edge<Station>, double> calcWeight = visiting => visiting.Source.CalculateRisk(visiting.Target);
+            Func<StationPath, double> calcWeight = visiting => visiting.Risk;
             
-            var algorithm = new DijkstraShortestPathAlgorithm<Station, Edge<Station>>(graph, calcWeight);
-            var pathRecorder = new VertexPredecessorRecorderObserver<Station, Edge<Station>>();
-            var distanceRecorder = new VertexDistanceRecorderObserver<Station, Edge<Station>>(calcWeight); 
-            
+            var algorithm = new DijkstraShortestPathAlgorithm<Station, StationPath>(graph, calcWeight);
+            var pathRecorder = new VertexPredecessorRecorderObserver<Station, StationPath>();
             using (pathRecorder.Attach(algorithm))
-            using(distanceRecorder.Attach(algorithm))
             {
                 algorithm.Compute(from);
-                IEnumerable<Edge<Station>> path;
+                IEnumerable<StationPath> path;
                 pathRecorder.TryGetPath(to, out path);
-                return distanceRecorder.Distances[to];
+
+                return new RiskResult(path, from.RadianLocation.Radius);
             }
         }
     }

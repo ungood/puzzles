@@ -7,6 +7,6 @@ namespace Puzzles.Euler.RiskyMoon.Risk
 {
     public interface IRiskCalculator
     {
-        double CalculateRisk(IEnumerable<Station> stations, int radius);
+        RiskResult CalculateRisk(IEnumerable<Station> stations, int radius);
     }
 }
