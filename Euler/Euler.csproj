@@ -68,6 +68,7 @@
     <Compile Include="RiskyMoon\Risk\IRiskCalculator.cs" />
     <Compile Include="RiskyMoon\Station.cs" />
     <Compile Include="RiskyMoon\Tests\CircleLatticeTests.cs" />
+    <Compile Include="RiskyMoon\Tests\RiskCalculatorTests.cs" />
     <Compile Include="RiskyMoon\Tests\SphereLatticeTests.cs" />
     <Compile Include="RiskyMoon\Tests\SimpleTest.cs" />
   </ItemGroup>
