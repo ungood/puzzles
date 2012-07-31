@@ -56,6 +56,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Problem1\Tests.cs" />
+    <Compile Include="Problem1\Puzzle.cs" />
+    <Compile Include="Problem2\Puzzle.cs" />
+    <Compile Include="Problem2\Tests.cs" />
+    <Compile Include="Problem3\Tests.cs" />
     <Compile Include="RiskyMoon\Risk\AStarRiskCalculator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RiskyMoon\Lattice\ICircleLatticeCalculator.cs" />
@@ -71,8 +76,8 @@
     <Compile Include="RiskyMoon\StationPath.cs" />
     <Compile Include="RiskyMoon\Tests\CircleLatticeTests.cs" />
     <Compile Include="RiskyMoon\Tests\RiskCalculatorTests.cs" />
+    <Compile Include="RiskyMoon\Tests\RiskyMoonSolution.cs" />
     <Compile Include="RiskyMoon\Tests\SphereLatticeTests.cs" />
-    <Compile Include="RiskyMoon\Tests\SimpleTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

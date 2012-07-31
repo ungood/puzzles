@@ -18,12 +18,22 @@ namespace Puzzles.Euler.RiskyMoon
             this.riskCalculator = riskCalculator;
         }
 
+        public double Solve()
+        {
+            return Solve(1, 15);
+        }
+
         public double Solve(int start, int count)
         {
             return Enumerable.Range(start, count)
                 .AsParallel()
                 .Select(n => n.Pow2() - 1)
-                .Sum(r => Solve(r));
+                .Sum(r =>
+                {
+                    var result = Solve(r);
+                    Console.WriteLine("{0}: {1}", r, result);
+                    return result;
+                });
         }
 
         public double Solve(int radius)

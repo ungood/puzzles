@@ -44,8 +44,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DiscreteMath\Fibonacci.cs" />
+    <Compile Include="Primes\IPrimeFactorer.cs" />
+    <Compile Include="Primes\IPrimeGenerator.cs" />
+    <Compile Include="Primes\SieveOfEratosthenes.cs" />
     <Compile Include="Extensions\EnumerableExtensions.cs" />
     <Compile Include="Extensions\PowerExtensions.cs" />
+    <Compile Include="Primes\TrialDivisionFactorer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Spatial\CartesianCoordinates.cs" />
     <Compile Include="Spatial\LatLongDegrees.cs" />

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Puzzles.Common.Extensions;
 using Puzzles.Common.Spatial;
 using QuickGraph;
 using QuickGraph.Algorithms.Observers;
@@ -12,8 +13,8 @@ namespace Puzzles.Euler.RiskyMoon.Risk
     {
         public RiskResult CalculateRisk(IEnumerable<Station> stations, int radius)
         {
-            var stationList = stations.ToList();
-            var graph = BuildGraph(stationList);
+            var stationList = stations.OrderByDescending(x => x.CartesianLocation.Z).ToList();
+            var graph = BuildGraph(stationList, radius);
 
             var northPole = new Station(new CartesianCoordinates(0, 0, radius));
             var southPole = new Station(new CartesianCoordinates(0, 0, radius * -1));
@@ -21,34 +22,35 @@ namespace Puzzles.Euler.RiskyMoon.Risk
             return CalculateMinimalRisk(graph, northPole, southPole);
         }
 
-        private DelegateVertexAndEdgeListGraph<Station, StationPath> BuildGraph(IList<Station> stations)
+        private DelegateVertexAndEdgeListGraph<Station, StationPath> BuildGraph(IList<Station> sortedStations, int radius)
         {
-            return new DelegateVertexAndEdgeListGraph<Station, StationPath>(stations,
-                delegate(Station station, out IEnumerable<StationPath> result) {
-                    result = stations.Select(target => new StationPath(station, target));
+            var maxDeltaZ = ((int)radius.Lg2()).Pow2(); // The max deltaz is the next lowest power of 2.
+
+            return new DelegateVertexAndEdgeListGraph<Station, StationPath>(sortedStations,
+                delegate(Station source, out IEnumerable<StationPath> result)
+                {
+                    result = GetNeighbors(source, sortedStations, maxDeltaZ).Select(target => new StationPath(source, target));
                     return true;
                 });
+        }
 
-            //var graph = new AdjacencyGraph<Station, StationPath>(false);
+        private static IEnumerable<Station> GetNeighbors(Station source, IEnumerable<Station> sortedStations, int maxDeltaZ)
+        {
+            var maxZ = source.CartesianLocation.Z;
+            var minZ = maxZ - maxDeltaZ;
 
-            //graph.AddVertexRange(stations);
-            //for (int i = 0; i < stations.Count; i++)
-            //{
-            //    for (int j = 0; j < stations.Count; j++)
-            //    {
-            //        if (i == j) continue;
-            //        graph.AddEdge(new StationPath(stations[i], stations[j]));
-            //    }
-            //}
+            var stations = sortedStations.SkipWhile(station => station.CartesianLocation.Z >= maxZ)
+                .TakeWhile(station => station.CartesianLocation.Z >= minZ).ToList();
 
-            //return graph;
+            return stations;
         }
 
         public RiskResult CalculateMinimalRisk(IVertexAndEdgeListGraph<Station, StationPath> graph, Station from, Station to)
         {
             Func<StationPath, double> calcWeight = visiting => visiting.Risk;
-            
-            var algorithm = new DijkstraShortestPathAlgorithm<Station, StationPath>(graph, calcWeight);
+            Func<Station, double> calcHeuristic = visiting => visiting.CalculateRisk(to);
+
+            var algorithm = new AStarShortestPathAlgorithm<Station, StationPath>(graph, calcWeight, calcHeuristic);
             var pathRecorder = new VertexPredecessorRecorderObserver<Station, StationPath>();
             using (pathRecorder.Attach(algorithm))
             {

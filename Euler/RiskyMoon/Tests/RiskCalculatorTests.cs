@@ -99,7 +99,7 @@ namespace Puzzles.Euler.RiskyMoon.Tests
             var latticeCalculator = new SliceSphereLatticeCalculator(new TurtleCircleLatticeCalculator());
             var riskCalculator = new AStarRiskCalculator();
 
-            var groups = Enumerable.Range(32767, 1).AsParallel()
+            var groups = Enumerable.Range(1, 50).AsParallel()
                 .Select(radius =>
                 {
                     var stations = latticeCalculator.FindLatticePoints(radius).Select(coord => new Station(coord));
