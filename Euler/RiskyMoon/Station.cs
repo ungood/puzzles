@@ -24,7 +24,7 @@ namespace Puzzles.Euler.RiskyMoon
 
         public double CalculateRisk(Station destination)
         {
-            var distance = MathEx.GreatCircleDistance(RadianLocation, destination.RadianLocation);
+            var distance = SpatialMath.GreatCircleDistance(RadianLocation, destination.RadianLocation);
             var x = distance / (RadianLocation.Radius * Math.PI);
             return x * x;
         }

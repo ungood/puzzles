@@ -11,7 +11,7 @@ namespace Puzzles.Euler.RiskyMoon
         public StationPath(Station source, Station target)
             : base(source, target)
         {
-            Distance = MathEx.GreatCircleDistance(source.RadianLocation, target.RadianLocation);
+            Distance = SpatialMath.GreatCircleDistance(source.RadianLocation, target.RadianLocation);
             var x = Distance / (source.RadianLocation.Radius * Math.PI);
             Risk = x * x;
         }

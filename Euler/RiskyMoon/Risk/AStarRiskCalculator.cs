@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Puzzles.Common;
 using Puzzles.Common.Extensions;
 using Puzzles.Common.Spatial;
 using QuickGraph;
@@ -24,7 +25,7 @@ namespace Puzzles.Euler.RiskyMoon.Risk
 
         private DelegateVertexAndEdgeListGraph<Station, StationPath> BuildGraph(IList<Station> sortedStations, int radius)
         {
-            var maxDeltaZ = ((int)radius.Lg2()).Pow2(); // The max deltaz is the next lowest power of 2.
+            var maxDeltaZ = MathEx.Pow2((int)MathEx.Lg2(radius)); // The max deltaz is the next lowest power of 2.
 
             return new DelegateVertexAndEdgeListGraph<Station, StationPath>(sortedStations,
                 delegate(Station source, out IEnumerable<StationPath> result)

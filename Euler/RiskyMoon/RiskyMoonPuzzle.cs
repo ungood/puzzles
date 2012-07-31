@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Puzzles.Common.Extensions;
+using Puzzles.Common;
 using Puzzles.Euler.RiskyMoon.Lattice;
 using Puzzles.Euler.RiskyMoon.Risk;
 
@@ -27,7 +27,7 @@ namespace Puzzles.Euler.RiskyMoon
         {
             return Enumerable.Range(start, count)
                 .AsParallel()
-                .Select(n => n.Pow2() - 1)
+                .Select(n => MathEx.Pow2(n) - 1)
                 .Sum(r =>
                 {
                     var result = Solve(r);
