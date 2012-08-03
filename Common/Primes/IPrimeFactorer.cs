@@ -5,8 +5,8 @@ using System.Text;
 
 namespace Puzzles.Common.Primes
 {
-    public interface IPrimeFactorer<T>
+    public interface IPrimeFactorer
     {
-        IEnumerable<T> Factor(T value);
+        PrimeFactorization Factor(long value);
     }
 }

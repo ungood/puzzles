@@ -5,6 +5,9 @@ using System.Text;
 
 namespace Puzzles.Euler.Problem4
 {
+    /// <summary>
+    /// Find the largest N-digit palindrome number.
+    /// </summary>
     public class Puzzle
     {
         private int max;

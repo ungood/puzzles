@@ -56,6 +56,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Problem10\Tests.cs" />
     <Compile Include="Problem1\Tests.cs" />
     <Compile Include="Problem1\Puzzle.cs" />
     <Compile Include="Problem2\Puzzle.cs" />
@@ -63,8 +64,11 @@
     <Compile Include="Problem3\Tests.cs" />
     <Compile Include="Problem4\Puzzle.cs" />
     <Compile Include="Problem4\Tests.cs" />
-    <Compile Include="Problem5\Puzzle.cs" />
     <Compile Include="Problem5\Tests.cs" />
+    <Compile Include="Problem6\Tests.cs" />
+    <Compile Include="Problem7\Tests.cs" />
+    <Compile Include="Problem8\Tests.cs" />
+    <Compile Include="Problem9\Tests.cs" />
     <Compile Include="RiskyMoon\Risk\AStarRiskCalculator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RiskyMoon\Lattice\ICircleLatticeCalculator.cs" />

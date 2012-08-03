@@ -8,19 +8,23 @@ namespace Puzzles.Common.Primes
     {
         public IEnumerable<long> Generate()
         {
-            var primes = new List<long>(new long[] {2, 3});
+            var primes = new List<long>();
 
             yield return 2;
             yield return 3;
 
-            var value = 3L;
-            while((value += 2) < long.MaxValue)
+            var value = 5L;
+            var add4 = false;
+            while(true)
             {
-                if (primes.Any(prime => value % prime == 0))
-                    continue;
+                if (!primes.Any(prime => value % prime == 0))
+                {
+                    primes.Add(value);
+                    yield return value;
+                }
 
-                primes.Add(value);
-                yield return value;
+                value += (add4 ? 4 : 2);
+                add4 = !add4;
             }
         }
     }

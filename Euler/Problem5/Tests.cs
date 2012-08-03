@@ -2,13 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
-using Puzzles.Common.Primes;
+using Puzzles.Common;
 
 namespace Puzzles.Euler.Problem5
 {
     [TestFixture]
     public class Tests
     {
+        public long Solve(int max)
+        {
+            return Enumerable.Range(1, max).Select(x => (long)x).Aggregate(MathEx.Lcm);
+        }
+
         [Test]
         public void GivenExample()
         {
@@ -19,9 +24,9 @@ namespace Puzzles.Euler.Problem5
         [Category("Solution")]
         public void Solution()
         {
-            var primeGenerator = new SieveOfEratosthenes();
-            var answer = primeGenerator.Generate().TakeWhile(prime => prime <= 20).Aggregate(1L, (left, right) => left * right);
+            var answer = Solve(20);
             Console.WriteLine("Problem 5: {0}", answer);
+            Assert.AreEqual(232792560, answer);
         }
     }
 }

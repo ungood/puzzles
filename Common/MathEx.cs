@@ -34,5 +34,35 @@ namespace Puzzles.Common
         {
             return degrees * (Math.PI / 180.0);
         }
+
+        #region LCM / GCD
+
+        public static int Gcd(int a, int b)
+        {
+            if (b > a)
+                return Gcd(b, a);
+
+            return b == 0 ? a : Gcd(b, a % b);
+        }
+
+        public static int Lcm(int a, int b)
+        {
+            return a * b / Gcd(a, b);
+        }
+
+        public static long Gcd(long a, long b)
+        {
+            if (b > a)
+                return Gcd(b, a);
+
+            return b == 0 ? a : Gcd(b, a % b);
+        }
+
+        public static long Lcm(long a, long b)
+        {
+            return a * b / Gcd(a, b);
+        }
+
+        #endregion
     }
 }

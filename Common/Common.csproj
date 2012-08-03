@@ -48,6 +48,7 @@
     <Compile Include="MathEx.cs" />
     <Compile Include="Primes\IPrimeFactorer.cs" />
     <Compile Include="Primes\IPrimeGenerator.cs" />
+    <Compile Include="Primes\PrimeFactor.cs" />
     <Compile Include="Primes\SieveOfEratosthenes.cs" />
     <Compile Include="Extensions\EnumerableExtensions.cs" />
     <Compile Include="Primes\TrialDivisionFactorer.cs" />
