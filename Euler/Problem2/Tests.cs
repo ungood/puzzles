@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using NUnit.Framework;
 using Puzzles.Common.DiscreteMath;
-using Puzzles.Common.Extensions;
+using Puzzles.Common.Test;
 
 namespace Puzzles.Euler.Problem2
 {

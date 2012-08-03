@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
-using Puzzles.Common.Extensions;
 using Puzzles.Common.Spatial;
+using Puzzles.Common.Test;
 using Puzzles.Euler.RiskyMoon.Lattice;
 
 namespace Puzzles.Euler.RiskyMoon.Tests

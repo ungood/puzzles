@@ -92,6 +92,10 @@
     <None Include="RiskyMoon\Readme.md" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Common.Test\Common.Test.csproj">
+      <Project>{69F05A62-DC42-4AA4-A693-2A8D7B5C0318}</Project>
+      <Name>Common.Test</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Common\Common.csproj">
       <Project>{14FE5B00-4891-450A-8219-7F7173EE3A28}</Project>
       <Name>Common</Name>
