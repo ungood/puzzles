@@ -11,16 +11,16 @@ namespace Puzzles.Common.Test.DataStructures
     class PriorityQueueTests
     {
         [Test]
-        public void SimpleTst()
+        public void SimpleTest()
         {
-            var pq = new BinaryHeap<int, int>();
+            var pq = new BinaryHeap<int>();
 
-            pq.Insert(11, 11);
-            pq.Insert(5, 5);
-            pq.Insert(3, 3);
-            pq.Insert(4, 4);
-            pq.Insert(8, 8);
-            pq.Insert(15, 15);
+            pq.Insert(11);
+            pq.Insert(5);
+            pq.Insert(3);
+            pq.Insert(4);
+            pq.Insert(8);
+            pq.Insert(15);
 
             var list = new List<int>();
             while(!pq.IsEmpty)

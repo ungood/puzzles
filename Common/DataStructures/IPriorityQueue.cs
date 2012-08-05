@@ -4,11 +4,19 @@ using System.Linq;
 
 namespace Puzzles.Common.DataStructures
 {
-    public interface IPriorityQueue<TValue>
+    public interface IPriorityQueue<TKey, TValue>
     {
-        void Insert(TKey priority, TValue item);
+        void Insert(TKey key, TValue value);
         TValue Peek();
         TValue PullMax();
+        bool IsEmpty { get; }
+    }
+
+    public interface IPriorityQueue<T>
+    {
+        void Insert(T item);
+        T Peek();
+        T PullMax();
         bool IsEmpty { get; }
     }
 }

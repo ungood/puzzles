@@ -13,7 +13,8 @@ namespace Puzzles.Common.Test.DataStructures
         {
             return new[]
             {
-                new TestCaseData(new SinglyLinkedList<int>()),
+                new TestCaseData(new LinkedListStack<int>()),
+                new TestCaseData(new ArrayStack<int>(50)), 
             };
         }
             

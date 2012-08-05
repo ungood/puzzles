@@ -1,31 +1,50 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Puzzles.Common.DataStructures
 {
-    public class BinaryHeap<TValue> : IPriorityQueue<TValue>
+    public class BinaryHeap<TKey, TValue> : BinaryHeap<KeyValuePair<TKey, TValue>>, IPriorityQueue<TKey, TValue> 
+    {
+        public BinaryHeap(IComparer<TKey> comparer = null,
+            int capacity = DynamicArray<TValue>.DefaultCapacity)
+            : base(new KeyValuePairComparer<TKey, TValue>(comparer), capacity)
+        {
+        }
+
+        public void Insert(TKey key, TValue value)
+        {
+            Insert(new KeyValuePair<TKey, TValue>(key, value));
+        }
+
+        public new TValue Peek()
+        {
+            return base.Peek().Value;
+        }
+
+        public new TValue PullMax()
+        {
+            return base.PullMax().Value;
+        }
+    }
+
+    public class BinaryHeap<T> : IPriorityQueue<T>
     {
         public int Capacity { get; private set; }
         public int Count { get; private set; }
 
-        private TValue[] array;
-        private IComparer<TValue> comparer;
+        private readonly DynamicArray<T> array; 
+        private readonly IComparer<T> comparer;
 
-        public BinaryHeap(IComparer<TValue> comparer = null, int capacity = 1)
+        public BinaryHeap(IComparer<T> comparer = null,
+            int capacity = DynamicArray<T>.DefaultCapacity)
         {
-            this.comparer = comparer ?? Comparer<TValue>.Default;
-            array = new TValue[capacity];
-            Capacity = capacity;
+            this.comparer = comparer ?? Comparer<T>.Default;
+            array = new DynamicArray<T>(capacity);
             Count = 0;
         }
-
-
-        public void Insert(TValue value)
+        
+        public void Insert(T value)
         {
-            if(Count >= Capacity)
-                DoubleCapacity();
-
             var index = Count;
             Count++;
 
@@ -42,21 +61,21 @@ namespace Puzzles.Common.DataStructures
             }
         }
 
-        public TValue Peek()
+        public T Peek()
         {
             if (Count == 0)
                 throw new InvalidOperationException("Heap contains no elements.");
             return array[0];
         }
 
-        public TValue PullMax()
+        public T PullMax()
         {
             if (Count == 0)
                 throw new InvalidOperationException("Heap contains no elements.");
 
             // Swap last element with the root, remove the root.
             var value = array[0];
-            array[0] = default(TValue);
+            array[0] = default(T);
             Swap(0, Count - 1);
             Count--;
 
@@ -70,15 +89,9 @@ namespace Puzzles.Common.DataStructures
             get { return Count == 0; }
         }
 
-        private void DoubleCapacity()
-        {
-            Capacity = Capacity * 2;
-            Array.Resize(ref array, Capacity);
-        }
-
         private int Compare(int a, int b)
         {
-            return comparer.Compare(array[a].Key, array[b].Key);
+            return comparer.Compare(array[a], array[b]);
         }
 
         private void Swap(int index1, int index2)

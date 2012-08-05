@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{14FE5B00-4891-450A-8219-7F7173EE3A28}</ProjectGuid>
+    <ProjectGuid>{62E377A7-F0C0-4C36-A7B5-8588B6C43359}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Puzzles.Common</RootNamespace>
-    <AssemblyName>Puzzles.Common</AssemblyName>
+    <RootNamespace>Puzzles.CodingInterview</RootNamespace>
+    <AssemblyName>Puzzles.CodingInterview</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="nunit.framework, Version=2.6.0.12051, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\NUnit.2.6.0.12054\lib\nunit.framework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,28 +44,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataStructures\ArrayStack.cs" />
-    <Compile Include="DataStructures\BinaryHeap.cs" />
-    <Compile Include="DataStructures\DynamicArray.cs" />
-    <Compile Include="DataStructures\IPriorityQueue.cs" />
-    <Compile Include="DataStructures\IQueue.cs" />
-    <Compile Include="DataStructures\IStack.cs" />
-    <Compile Include="DataStructures\KeyComparer.cs" />
-    <Compile Include="DataStructures\LinkedList.cs" />
-    <Compile Include="DataStructures\LinkedListQueue.cs" />
-    <Compile Include="DataStructures\LinkedListStack.cs" />
-    <Compile Include="DiscreteMath\Fibonacci.cs" />
-    <Compile Include="MathEx.cs" />
-    <Compile Include="Primes\IPrimeFactorer.cs" />
-    <Compile Include="Primes\IPrimeGenerator.cs" />
-    <Compile Include="Primes\PrimeFactor.cs" />
-    <Compile Include="Primes\SieveOfEratosthenes.cs" />
-    <Compile Include="Primes\TrialDivisionFactorer.cs" />
+    <Compile Include="Chapter01\Problem01.cs" />
+    <Compile Include="Chapter01\Problem02.cs" />
+    <Compile Include="Chapter01\Problem03.cs" />
+    <Compile Include="Chapter03\Problem03.cs" />
+    <Compile Include="Chapter03\Problem04.cs" />
+    <Compile Include="Chapter05\Problem01.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Spatial\CartesianCoordinates.cs" />
-    <Compile Include="Spatial\LatLongDegrees.cs" />
-    <Compile Include="Spatial\LatLongRadians.cs" />
-    <Compile Include="Spatial\SpatialMath.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common.Test\Common.Test.csproj">
+      <Project>{69F05A62-DC42-4AA4-A693-2A8D7B5C0318}</Project>
+      <Name>Common.Test</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{14FE5B00-4891-450A-8219-7F7173EE3A28}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
