@@ -27,7 +27,6 @@ namespace Puzzles.Euler.Problems000
         }
 
         [Test]
-        [Ignore("Slow")]
         public void Solution()
         {
             var factorer = new TrialDivisionFactorer(new SieveOfEratosthenes());

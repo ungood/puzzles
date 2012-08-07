@@ -11,7 +11,7 @@ namespace PuzzleRunner
     {
         static void Main(string[] args)
         {
-            var commandLine = "Puzzles.Euler.dll /exclude:Slow";
+            var commandLine = "Puzzles.Euler.dll /run:Puzzles.Euler.Problem10.Problem010Tests"; // "Puzzles.Euler.dll /exclude:Slow";
             Runner.Main(commandLine.Split(' '));
             Console.ReadLine();
         }

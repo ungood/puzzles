@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Puzzles.Common.Primes
 {
-    public class SieveOfEratosthenes : IPrimeGenerator<long>
+    public class SieveOfEratosthenes : IPrimeGenerator
     {
         public IEnumerable<long> Generate()
         {

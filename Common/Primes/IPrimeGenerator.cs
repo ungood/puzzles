@@ -4,8 +4,8 @@ using System.Linq;
 
 namespace Puzzles.Common.Primes
 {
-    public interface IPrimeGenerator<T>
+    public interface IPrimeGenerator
     {
-        IEnumerable<T> Generate();
+        IEnumerable<long> Generate();
     }
 }

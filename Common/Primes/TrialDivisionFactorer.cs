@@ -7,9 +7,9 @@ namespace Puzzles.Common.Primes
 {
     public class TrialDivisionFactorer : IPrimeFactorer
     {
-        private readonly IPrimeGenerator<long> generator;
+        private readonly IPrimeGenerator generator;
 
-        public TrialDivisionFactorer(IPrimeGenerator<long> generator)
+        public TrialDivisionFactorer(IPrimeGenerator generator)
         {
             this.generator = generator;
         }
@@ -26,11 +26,13 @@ namespace Puzzles.Common.Primes
             using(var primes = generator.Generate().GetEnumerator())
             {
                 primes.MoveNext();
-                while(primes.Current < maxFactor)
+                while(primes.Current < maxFactor && primes.Current <= value)
                 {
-                    if (value % primes.Current == 0)
+                    long rem;
+                    var div = Math.DivRem(value, primes.Current, out rem);
+                    if (rem == 0)
                     {
-                        value /= primes.Current;
+                        value = div;
                         yield return primes.Current;
                     }
                     else
