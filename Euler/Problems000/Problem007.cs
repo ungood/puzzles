@@ -1,17 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using NUnit.Framework;
 using Puzzles.Common.Primes;
 
-namespace Puzzles.Euler.Problem7
+namespace Puzzles.Euler.Problems000
 {
-    [TestFixture(Category="Solved")]
-    public class Tests
+    [TestFixture]
+    public class Problem007Tests
     {
         [Test]
-        [Category("Solution")]
         public void Solution()
         {
             var generator = new SieveOfEratosthenes();

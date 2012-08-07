@@ -7,8 +7,8 @@ using Puzzles.Common.Primes;
 
 namespace Puzzles.Euler.Problem10
 {
-    [TestFixture(Category="Solved")]
-    public class Tests
+    [TestFixture]
+    public class Problem010Tests
     {
         public long Solve(long max)
         {
@@ -24,8 +24,7 @@ namespace Puzzles.Euler.Problem10
         }
 
         [Test]
-        [Category("Solution")]
-        [Category("Slow")]
+        [Ignore("Slow")]
         public void Solution()
         {
             var answer = Solve(2000000L);

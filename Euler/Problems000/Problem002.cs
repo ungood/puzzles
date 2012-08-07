@@ -5,10 +5,23 @@ using NUnit.Framework;
 using Puzzles.Common.DiscreteMath;
 using Puzzles.Common.Test;
 
-namespace Puzzles.Euler.Problem2
+namespace Puzzles.Euler.Problems000
 {
-    [TestFixture(Category="Solved")]
-    public class Tests
+    public static class Problem002
+    {
+        public static long SumEvenFibonacciValues(int max)
+        {
+            var fib = new Fibonacci(1, 2);
+
+            return fib.Generate()
+                .TakeWhile(n => n < max)
+                .Where(n => n % 2 == 0)
+                .Sum();
+        }
+    }
+
+    [TestFixture]
+    public class Problem002Tests
     {
         [Test]
         public void FibonacciTest()
@@ -20,15 +33,14 @@ namespace Puzzles.Euler.Problem2
         [Test]
         public void GivenExample()
         {
-            var actual = Puzzle.SumEvenFibonacciValues(90);
+            var actual = Problem002.SumEvenFibonacciValues(90);
             Assert.AreEqual(44, actual);
         }
 
         [Test]
-        [Category("Solution")]
         public void Solution()
         {
-            var answer = Puzzle.SumEvenFibonacciValues(4000000);
+            var answer = Problem002.SumEvenFibonacciValues(4000000);
             Console.WriteLine("Problem 2: {0}", answer);
             Assert.AreEqual(4613732, answer);
         }

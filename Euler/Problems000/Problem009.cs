@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using NUnit.Framework;
 
-namespace Puzzles.Euler.Problem9
+namespace Puzzles.Euler.Problems000
 {
-    [TestFixture(Category="Solved")]
-    public class Tests
+    [TestFixture]
+    public class Problem009Tests
     {
         public int Solve(int sum)
         {
@@ -35,7 +34,6 @@ namespace Puzzles.Euler.Problem9
         }
 
         [Test]
-        [Category("Solution")]
         public void Solution()
         {
             var answer = Solve(1000);//.Single();

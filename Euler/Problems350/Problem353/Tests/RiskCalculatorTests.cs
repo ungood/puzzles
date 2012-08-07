@@ -53,6 +53,7 @@ namespace Puzzles.Euler.RiskyMoon.Tests
         }
 
         [Test]
+        [Ignore("Slow")]
         public void MaxZ()
         {
             var latticeCalculator = new SliceSphereLatticeCalculator(new TurtleCircleLatticeCalculator());
@@ -94,6 +95,7 @@ namespace Puzzles.Euler.RiskyMoon.Tests
         // 0.23604566644613: 3, 24, 6, 12
         // 0.50000000000000: 2, 16, 8, 4, 1
         [Test]
+        [Ignore("Slow")]
         public void FirstFiftyGroupedByRisk()
         {
             var latticeCalculator = new SliceSphereLatticeCalculator(new TurtleCircleLatticeCalculator());

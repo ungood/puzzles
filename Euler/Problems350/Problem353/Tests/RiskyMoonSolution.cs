@@ -12,7 +12,7 @@ namespace Puzzles.Euler.RiskyMoon.Tests
     public class RiskyMoonSolution
     {
         [Test]
-        [Category("Solution, Slow")]
+        [Ignore("Slow")]
         public void PrintSolution()
         {
             var latticeCalculator = new SliceSphereLatticeCalculator(new TurtleCircleLatticeCalculator());

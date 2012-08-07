@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using NUnit.Framework;
 
-namespace Puzzles.Euler.Problem8
+namespace Puzzles.Euler.Problems000
 {
-    [TestFixture(Category="Solved")]
-    public class Tests
+    [TestFixture]
+    public class Problem008Tests
     {
         public int Solve(int[] digits)
         {
@@ -23,7 +22,6 @@ namespace Puzzles.Euler.Problem8
         }
 
         [Test]
-        [Category("Solution")]
         public void Solution()
         {
             var number = new int[]

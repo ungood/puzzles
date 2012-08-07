@@ -5,10 +5,10 @@ using NUnit.Framework;
 using Puzzles.Common.Primes;
 using Puzzles.Common.Test;
 
-namespace Puzzles.Euler.Problem3
+namespace Puzzles.Euler.Problems000
 {
-    [TestFixture(Category="Solved")]
-    public class Tests
+    [TestFixture]
+    public class Problem003Tests
     {
         [Test]
         public void SieveOfEratosthenesTest()
@@ -27,8 +27,7 @@ namespace Puzzles.Euler.Problem3
         }
 
         [Test]
-        [Category("Solution")]
-        [Category("Slow")]
+        [Ignore("Slow")]
         public void Solution()
         {
             var factorer = new TrialDivisionFactorer(new SieveOfEratosthenes());

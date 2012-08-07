@@ -4,10 +4,10 @@ using System.Linq;
 using NUnit.Framework;
 using Puzzles.Common;
 
-namespace Puzzles.Euler.Problem5
+namespace Puzzles.Euler.Problems000
 {
     [TestFixture]
-    public class Tests
+    public class Problem005Tests
     {
         public long Solve(int max)
         {
@@ -21,7 +21,6 @@ namespace Puzzles.Euler.Problem5
         }
 
         [Test]
-        [Category("Solution")]
         public void Solution()
         {
             var answer = Solve(20);

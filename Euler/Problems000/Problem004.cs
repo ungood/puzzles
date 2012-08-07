@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using NUnit.Framework;
 
-namespace Puzzles.Euler.Problem4
+namespace Puzzles.Euler.Problems000
 {
     /// <summary>
     /// Find the largest N-digit palindrome number.
     /// </summary>
-    public class Puzzle
+    public class Problem004
     {
         private int max;
 
-        public Puzzle(int numberOfDigits)
+        public Problem004(int numberOfDigits)
         {
             max = (int)(Math.Pow(10, numberOfDigits)) - 1;
         }
@@ -52,5 +52,26 @@ namespace Puzzles.Euler.Problem4
                 value /= 10;
             }
         } 
+    }
+
+    [TestFixture]
+    public class Problem004Tests
+    {
+        [Test]
+        public void GivenExample()
+        {
+            var puzzle = new Problem004(2);
+            Assert.AreEqual(9009, puzzle.Solve());
+        }
+
+        [Test]
+        public void Solution()
+        {
+            var puzzle = new Problem004(3);
+
+            var answer = puzzle.Solve();
+            Assert.AreEqual(906609, answer);
+            Console.WriteLine("Puzzle 4: {0}", answer);
+        }
     }
 }

@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using NUnit.Framework;
 
-namespace Puzzles.Euler.Problem1
+namespace Puzzles.Euler.Problems000
 {
     /// <summary>
     /// Find the sum of all natural numbers less than N that are multiples of the given numbers.
     /// </summary>
-    public class Puzzle
+    public class Problem001
     {
         private readonly int[] factors;
 
-        public Puzzle(params int[] factors)
+        public Problem001(params int[] factors)
         {
             this.factors = factors;
         }
@@ -32,6 +32,26 @@ namespace Puzzles.Euler.Problem1
             return Enumerable.Range(1, n - 1)
                 .Where(i => factors.Any(factor => i % factor == 0))
                 .Sum();
+        }
+    }
+
+    [TestFixture]
+    public class Problem001Tests
+    {
+        [Test]
+        public void GivenExample()
+        {
+            var puzzle = new Problem001(3, 5);
+            Assert.AreEqual(23, puzzle.Solve(10));
+        }
+
+        [Test]
+        public void Solution()
+        {
+            var puzzle = new Problem001(3, 5);
+            var answer = puzzle.Solve(1000);
+            Console.WriteLine("Problem 1: {0}", answer);
+            Assert.AreEqual(answer, puzzle.Solve(1000));
         }
     }
 }
