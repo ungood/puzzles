@@ -22,12 +22,12 @@ namespace Puzzles.Common.Test.Primes
 
         [Test]
         [TestCaseSource("GetImplementations")]
-        public void TimeFirstTenThousandPrimes(IPrimeGenerator generator)
+        public void TimeFirstHundredThousandPrimes(IPrimeGenerator generator)
         {
             var sw = new Stopwatch();
             sw.Start();
 
-            var primes = generator.Generate().Take(10000).ToList();
+            var primes = generator.Generate().Take(100000).ToList();
 
             sw.Stop();
             Console.WriteLine("Time: {0}", sw.Elapsed);

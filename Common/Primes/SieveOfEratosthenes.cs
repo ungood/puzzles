@@ -17,7 +17,8 @@ namespace Puzzles.Common.Primes
             var add4 = false;
             while(true)
             {
-                if (!primes.Any(prime => value % prime == 0))
+                var maxFactor = (int)Math.Sqrt(value) + 1;
+                if (!primes.TakeWhile(prime => prime <= maxFactor).Any(prime => value % prime == 0))
                 {
                     primes.Add(value);
                     yield return value;

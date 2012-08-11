@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using NUnit.Framework;
 using Puzzles.Common.Primes;
 
-namespace Puzzles.Euler.Problem10
+namespace Puzzles.Euler.Problems010
 {
     [TestFixture]
     public class Problem010Tests
@@ -24,7 +23,6 @@ namespace Puzzles.Euler.Problem10
         }
 
         [Test]
-        [Ignore("Slow")]
         public void Solution()
         {
             var answer = Solve(2000000L);
