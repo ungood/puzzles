@@ -4,9 +4,9 @@ using System.Linq;
 
 namespace Puzzles.Common.DataStructures
 {
-    public interface IPriorityQueue<TKey, TValue>
+    public interface IPriorityQueue<in TPriority, TValue>
     {
-        void Insert(TKey key, TValue value);
+        void Insert(TPriority key, TValue value);
         TValue Peek();
         TValue PullMax();
         bool IsEmpty { get; }

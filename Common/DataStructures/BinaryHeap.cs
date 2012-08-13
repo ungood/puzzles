@@ -3,17 +3,17 @@ using System.Collections.Generic;
 
 namespace Puzzles.Common.DataStructures
 {
-    public class BinaryHeap<TKey, TValue> : BinaryHeap<KeyValuePair<TKey, TValue>>, IPriorityQueue<TKey, TValue> 
+    public class BinaryHeap<TPriority, TValue> : BinaryHeap<KeyValuePair<TPriority, TValue>>, IPriorityQueue<TPriority, TValue> 
     {
-        public BinaryHeap(IComparer<TKey> comparer = null,
+        public BinaryHeap(IComparer<TPriority> comparer = null,
             int capacity = DynamicArray<TValue>.DefaultCapacity)
-            : base(new KeyValuePairComparer<TKey, TValue>(comparer), capacity)
+            : base(new KeyValuePairComparer<TPriority, TValue>(comparer), capacity)
         {
         }
 
-        public void Insert(TKey key, TValue value)
+        public void Insert(TPriority key, TValue value)
         {
-            Insert(new KeyValuePair<TKey, TValue>(key, value));
+            Insert(new KeyValuePair<TPriority, TValue>(key, value));
         }
 
         public new TValue Peek()

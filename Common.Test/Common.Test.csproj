@@ -45,8 +45,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataStructures\PriorityQueueTests.cs" />
+    <Compile Include="DataStructures\SetTests.cs" />
     <Compile Include="DataStructures\StackTests.cs" />
     <Compile Include="EnumerableExtensions.cs" />
+    <Compile Include="Graph\AStarTests.cs" />
     <Compile Include="Primes\PrimeGenerationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
