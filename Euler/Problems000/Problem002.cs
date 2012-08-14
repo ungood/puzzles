@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
-using Puzzles.Common.DiscreteMath;
+using Puzzles.Common.Sequences;
 using Puzzles.Common.Test;
 
 namespace Puzzles.Euler.Problems000
@@ -11,7 +11,7 @@ namespace Puzzles.Euler.Problems000
     {
         public static long SumEvenFibonacciValues(int max)
         {
-            var fib = new Fibonacci(1, 2);
+            var fib = new FibonacciSequence(1, 2);
 
             return fib.Generate()
                 .TakeWhile(n => n < max)
@@ -26,7 +26,7 @@ namespace Puzzles.Euler.Problems000
         [Test]
         public void FibonacciTest()
         {
-            var firstTen = new Fibonacci(1, 2).Generate().Take(10);
+            var firstTen = new FibonacciSequence(1, 2).Generate().Take(10);
             firstTen.AssertSequenceEquals(1, 2, 3, 5, 8, 13, 21, 34, 55, 89);
         }
 

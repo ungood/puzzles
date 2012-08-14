@@ -1,21 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
-namespace Puzzles.Common.DiscreteMath
+namespace Puzzles.Common.Sequences
 {
-    public class Fibonacci
+    public class FibonacciSequence : ISequence
     {
         private readonly long first;
         private readonly long second;
 
-        public Fibonacci() : this(1, 2)
+        public FibonacciSequence() : this(1, 2)
         {
             
         }
 
-        public Fibonacci(long first, long second)
+        public FibonacciSequence(long first, long second)
         {
             this.first = first;
             this.second = second;
