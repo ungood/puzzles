@@ -35,5 +35,16 @@ namespace Puzzles.Euler.Problems010
             var answer = problem.FindFirstNumberInSequenceWithMoreThanXFactors(sequence, 5);
             Assert.AreEqual(28, answer);
         }
+
+        [Test]
+        public void Solution()
+        {
+            var factorer = new TrialDivisionFactorer();
+            var sequence = new TriangleNumberSequence();
+            var problem = new Problem012(factorer);
+            var answer = problem.FindFirstNumberInSequenceWithMoreThanXFactors(sequence, 500);
+            Console.WriteLine("Problem 012: {0}", answer);
+            Assert.AreEqual(76576500, answer);
+        }
     }
 }

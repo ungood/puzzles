@@ -19,7 +19,7 @@ namespace Puzzles.Common.NumberTheory
                 if(remainder == 0)
                 {
                     yield return i;
-                    if(quotient != i)
+                    if(quotient > maxFactor)
                         yield return quotient;
                 }
             }
