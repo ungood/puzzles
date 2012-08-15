@@ -12,7 +12,7 @@ namespace Puzzles.Common.Test.Sequences
         [Test]
         public void TestSequence()
         {
-            var triangleNumbers = new TriangleNumberSequence();
+            var triangleNumbers = new TriangleNumbers();
             triangleNumbers.Generate().Take(10).AssertSequenceEquals(1, 3, 6, 10, 15, 21, 28, 36, 45, 55);
         }
     }

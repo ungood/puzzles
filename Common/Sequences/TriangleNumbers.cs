@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Puzzles.Common.Sequences
 {
-    public class TriangleNumberSequence : ISequence
+    public class TriangleNumbers
     {
         public IEnumerable<long> Generate()
         {

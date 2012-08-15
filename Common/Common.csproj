@@ -56,6 +56,7 @@
     <Compile Include="DataStructures\LinkedList.cs" />
     <Compile Include="DataStructures\LinkedListQueue.cs" />
     <Compile Include="DataStructures\LinkedListStack.cs" />
+    <Compile Include="Sequences\AmicableNumbers.cs" />
     <Compile Include="Sequences\FibonacciSequence.cs" />
     <Compile Include="Graph\AStarAlgorithm.cs" />
     <Compile Include="Graph\IImplicitGraph.cs" />
@@ -63,9 +64,8 @@
     <Compile Include="MaxBy.cs" />
     <Compile Include="MathEx.cs" />
     <Compile Include="NumberTheory\IFactorer.cs" />
-    <Compile Include="Sequences\ISequence.cs" />
     <Compile Include="NumberTheory\TrialDivisionFactorer.cs" />
-    <Compile Include="Sequences\TriangleNumberSequence.cs" />
+    <Compile Include="Sequences\TriangleNumbers.cs" />
     <Compile Include="Primes\IPrimeFactorer.cs" />
     <Compile Include="Primes\IPrimeGenerator.cs" />
     <Compile Include="Primes\PrimeFactor.cs" />

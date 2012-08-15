@@ -17,8 +17,9 @@ namespace Puzzles.Euler.Problems010
             this.factorer = factorer;
         }
 
-        public long FindFirstNumberInSequenceWithMoreThanXFactors(ISequence sequence, int numFactors)
+        public long FindFirstNumberInSequenceWithMoreThanXFactors(int numFactors)
         {
+            var sequence = new TriangleNumbers();
             return sequence.Generate().First(x => factorer.FindNonTrivialFactors(x).Count() + 2 > numFactors);
         }
     }
@@ -30,9 +31,8 @@ namespace Puzzles.Euler.Problems010
         public void GivenExample()
         {
             var factorer = new TrialDivisionFactorer();
-            var sequence = new TriangleNumberSequence();
             var problem = new Problem012(factorer);
-            var answer = problem.FindFirstNumberInSequenceWithMoreThanXFactors(sequence, 5);
+            var answer = problem.FindFirstNumberInSequenceWithMoreThanXFactors(5);
             Assert.AreEqual(28, answer);
         }
 
@@ -40,9 +40,8 @@ namespace Puzzles.Euler.Problems010
         public void Solution()
         {
             var factorer = new TrialDivisionFactorer();
-            var sequence = new TriangleNumberSequence();
             var problem = new Problem012(factorer);
-            var answer = problem.FindFirstNumberInSequenceWithMoreThanXFactors(sequence, 500);
+            var answer = problem.FindFirstNumberInSequenceWithMoreThanXFactors(500);
             Console.WriteLine("Problem 012: {0}", answer);
             Assert.AreEqual(76576500, answer);
         }

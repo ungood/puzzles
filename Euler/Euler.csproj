@@ -76,6 +76,7 @@
     <Compile Include="Problems010\Problem015.cs" />
     <Compile Include="Problems010\Problem018.cs" />
     <Compile Include="Problems020\Problem020.cs" />
+    <Compile Include="Problems020\Problem021.cs" />
     <Compile Include="Problems060\Problem067.cs" />
     <Compile Include="Problems350\Problem353\Risk\AStarRiskCalculator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

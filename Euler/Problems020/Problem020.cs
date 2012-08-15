@@ -28,7 +28,7 @@ namespace Puzzles.Euler.Problems020
         {
             var factorial = Problem020.Factorial(10);
             var sum = factorial.SumDigits(10);
-            Assert.AreEqual(3628800, factorial);
+            Assert.AreEqual(3628800, (int)factorial);
             Assert.AreEqual(27, sum);
         }
 

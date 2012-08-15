@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Puzzles.Common.Sequences
 {
-    public class FibonacciSequence : ISequence
+    public class FibonacciSequence
     {
         private readonly long first;
         private readonly long second;
