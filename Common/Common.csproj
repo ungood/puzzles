@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BigIntegerExtensions.cs" />
     <Compile Include="DataStructures\ArrayStack.cs" />
     <Compile Include="DataStructures\BinaryHeap.cs" />
     <Compile Include="DataStructures\DynamicArray.cs" />
